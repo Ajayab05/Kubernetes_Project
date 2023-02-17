@@ -1,8 +1,6 @@
 FROM  centos
 RUN yum -y install epel-release && yum clean all
 RUN yum -y install httpd mod_ssl lsof tree && yum clean all && systemctl enable httpd.service
-zip
-unzip
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
 WORKDIR /var/www/html/
 RUN unzip photogenic.zip
