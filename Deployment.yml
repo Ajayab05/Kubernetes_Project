@@ -1,20 +1,12 @@
-kind: Deployment
-apiVersion: apps/v1
+apiVersion: v1
+kind: Service
 metadata:
-   name: mrdevops
+  name: simple-app-service
 spec:
-   replicas: 2
-   selector:      # tells the controller which pods to watch/belong to
-    matchLabels:
-     app: mrdevops
-   template:
-      metadata:
-        labels:
-          app: mrdevops
-      spec:
-       containers:
-        - name: mrdevops
-          image: ajayab05/pipeline-demo
-          imagePullPolicy: Always
-          ports:
-          - containerPort: 80
+  type: LoadBalancer
+  selector:
+    app: simple-app
+  ports:
+  - port: 4000
+    targetPort: 4000
+    protocol: TCP
