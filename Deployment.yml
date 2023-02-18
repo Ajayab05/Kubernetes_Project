@@ -1,12 +1,23 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: simple-app-service
+  name: simple-app-deployment
 spec:
-  type: LoadBalancer
+  replicas: 2
   selector:
-    app: simple-app
-  ports:
-  - port: 4000
-    targetPort: 4000
-    protocol: TCP
+    matchLabels:
+      app: simple-app
+  template:
+    metadata:
+      labels:
+        app: simple-app
+    spec:
+      containers:
+      - name: simple-app
+        image: victorelvis/simple-app
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
