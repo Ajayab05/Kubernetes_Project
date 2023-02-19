@@ -1,12 +1,14 @@
+kind: Service                             
 apiVersion: v1
-kind: Service
 metadata:
-  name: simple-app-service
+  name: mrdevops
+  labels:
+    app: mrdevops
 spec:
-  type: LoadBalancer
-  selector:
-    app: simple-app
   ports:
-  - port: 4000
-    targetPort: 4000
-    protocol: TCP
+    - port: 8080                               
+      targetPort: 80                    
+      nodePort: 31200
+  selector:
+    app: mrdevops                    
+  type: LoadBalancer 
