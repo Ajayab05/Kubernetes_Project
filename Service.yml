@@ -6,8 +6,8 @@ metadata:
     app: mrdevops
 spec:
   ports:
-    - port: 7080                               
-      targetPort: 90                    
+    - port: 80                               
+      targetPort: 80                    
       nodePort: 31200
   selector:
     app: mrdevops                    
