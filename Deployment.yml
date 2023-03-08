@@ -17,4 +17,4 @@ spec:
           image: ajayab05/pipeline-demo:latest
           imagePullPolicy: Always
           ports:
-          - containerPort: 80
+          - containerPort: 82
